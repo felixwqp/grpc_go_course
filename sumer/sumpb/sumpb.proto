@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package greet;
+option go_package="./sumer/sumpb";
+
+
+message Arguments{
+    int32 argument_a = 1;
+    int32 argument_b = 2;
+}
+
+message Result{
+    int32 sum = 1;
+}
+
+service SumService{
+    // Unary API
+    rpc Sum(Arguments) returns (Result) {};
+    rpc BiDiSum(stream Arguments) returns (stream Result){};
+}
